@@ -1,4 +1,4 @@
-# catering-coupon
+# wedding
 
 ## Project setup
 ```
