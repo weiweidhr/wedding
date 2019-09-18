@@ -7,7 +7,6 @@
     <template v-else>
       <div class="page_box" v-if="!err.errmsg.length">
         <audio autoplay loop id="media">
-          <!--<source src="../assets/music/YouAreMySunshine.mp3" type="audio/mpeg">-->
           <source src="../assets/music/LostInParadies.mp3" type="audio/mpeg">
         </audio>
         <img class="music" :class="{ 'move': move }" @click.self="control" src="../assets/images/yinfu.png" alt="">
