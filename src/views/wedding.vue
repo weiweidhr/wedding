@@ -13,7 +13,9 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="item in list">
-              <img class="img" v-lazy="item.url" alt="best wishes to you">
+              <!--<img class="" v-lazy="item.url" alt="best wishes to you">-->
+              <img class="swiper-lazy" :data-src="item.url" alt="best wishes to you">
+              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
             </div>
           </div>
         </div>
@@ -89,7 +91,9 @@ export default {
 //          crossFade: true,
 //        },
         observeParents: false,
-        observer: true
+        observer: true,
+        lazyLoading : true,
+        lazyLoadingInPrevNext : true
       });
     }
   }
