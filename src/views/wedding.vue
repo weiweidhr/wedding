@@ -13,9 +13,9 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="item in list">
-              <!--<img class="" v-lazy="item.url" alt="best wishes to you">-->
-              <img class="swiper-lazy" :data-src="item.url" alt="best wishes to you">
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+              <img v-lazy="item.url" alt="best wishes to you">
+              <!--<img class="swiper-lazy" :data-src="item.url" alt="best wishes to you">-->
+              <!--<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>-->
             </div>
           </div>
         </div>
@@ -29,7 +29,8 @@
 <script>
 import Swiper from "swiper";
 import err from "../components/err.vue";
-import mock from '../mock';
+//import mock from '../mock';
+let t = null;
 
 export default {
   name: "home",
@@ -50,12 +51,19 @@ export default {
       },
       list: [],
       swiper: null,
-      move: true
+      move: true,
+      option: {
+        max: 60,
+        now: 56,
+        unit: 10,
+        time: 10000
+      }
     }
   },
   mounted() {
     let page = this;
-    this.list = mock.photos;
+//    this.list = mock.photos;
+    this.allocation(10);
     this.$nextTick(() => {
       setTimeout(function() {
         page.initSwiper();
@@ -63,7 +71,32 @@ export default {
       }, 500);
     });
   },
+  destroyed() {
+      clearTimeout(t);
+  },
   methods: {
+    loadPhoto(n) {
+      let page = this;
+      for (let i = n - this.option.unit; i < n; i++) {
+        if(i < this.option.now) {
+          this.list.push({
+            url: require(`../assets/images/${i}.jpg`)
+          });
+        } else {
+          this.allocation = null;
+        }
+      }
+      console.log('数量', page.list.length);
+    },
+    allocation(now = 10) {
+      let page = this;
+      page.loadPhoto(now);
+      if(now < this.option.max) {
+        setTimeout(function() {
+          page.allocation(now + 10);
+        }, page.option.time);
+      }
+    },
     handleErr() {
       window.location.reload();
     },
@@ -86,10 +119,10 @@ export default {
 //          delay: 3000,
 //          stopOnLastSlide: false
 //        },
-        effect : 'fade',
 //        fadeEffect: {
 //          crossFade: true,
 //        },
+        effect : 'fade',
         observeParents: false,
         observer: true,
         lazyLoading : true,
