@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import 'amfe-flexible';
 import VueLazyLoad from 'vue-lazyload';
-import "swiper/dist/css/swiper.min.css";
+import "swiper/css/swiper.min.css";
 
 Vue.use(VueLazyLoad, {
   error: require('./assets/images/lazy.jpg'),

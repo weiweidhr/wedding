@@ -19,11 +19,5 @@ module.exports = {
       }
     }
   },
-  pluginOptions: {
-    'cube-ui': {
-      postCompile: true,
-      theme: false
-    }
-  },
   productionSourceMap: false
 }

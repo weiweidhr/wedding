@@ -29,8 +29,7 @@
 <script>
 import Swiper from "swiper";
 import err from "../components/err.vue";
-//import mock from '../mock';
-let t = null;
+import mock from '../mock';
 
 export default {
   name: "home",
@@ -56,23 +55,23 @@ export default {
         max: 60,
         now: 56,
         unit: 10,
-        time: 10000
+        time: 20000
       }
     }
   },
   mounted() {
     let page = this;
-//    this.list = mock.photos;
-    this.allocation(10);
+    if (navigator.userAgent.indexOf('Android') > -1) {
+      this.list = mock.photos;
+    } else {
+      this.allocation(10);
+    }
     this.$nextTick(() => {
       setTimeout(function() {
         page.initSwiper();
         page.move = !document.getElementById("media").paused;
       }, 500);
     });
-  },
-  destroyed() {
-      clearTimeout(t);
   },
   methods: {
     loadPhoto(n) {
@@ -110,23 +109,20 @@ export default {
       this.swiper = new Swiper(".swiper-container", {
         slidesPerView: 'auto',
         loop: true,
-        autoplay: 3000,
-        speed: 300,
-        loop: true,
-        autoplayDisableOnInteraction : false,
-//        autoplay: {
-//          disableOnInteraction: false, // 手动滑动后是否禁止自动播放
-//          delay: 3000,
-//          stopOnLastSlide: false
-//        },
-//        fadeEffect: {
-//          crossFade: true,
-//        },
-        effect : 'fade',
+//        autoplay: 3000,
+//        speed: 300,
+//        autoplayDisableOnInteraction : false,
+        autoplay: {
+          disableOnInteraction: false, // 手动滑动后是否禁止自动播放
+          delay: 3000,
+          stopOnLastSlide: false
+        },
+        fadeEffect: {
+          crossFade: true,
+        },
+        effect: 'fade',
         observeParents: false,
-        observer: true,
-        lazyLoading : true,
-        lazyLoadingInPrevNext : true
+        observer: true
       });
     }
   }
