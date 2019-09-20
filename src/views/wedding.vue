@@ -9,13 +9,12 @@
         <audio autoplay loop id="media">
           <source src="../assets/music/LostInParadies.mp3" type="audio/mpeg">
         </audio>
-        <img class="music" :class="{ 'move': move }" @click.self="control" src="../assets/images/yinfu.png" alt="">
+        <!--<img class="music" :class="{ 'move': move }" @click.self="control" src="../assets/images/yinfu.png" alt="">-->
+        <cat :move="move"></cat>
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="item in list">
               <img v-lazy="item.url" alt="best wishes to you">
-              <!--<img class="swiper-lazy" :data-src="item.url" alt="best wishes to you">-->
-              <!--<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>-->
             </div>
           </div>
         </div>
@@ -25,16 +24,17 @@
 
   </div>
 </template>
-
 <script>
 import Swiper from "swiper";
 import err from "../components/err.vue";
+import cat from "../components/cat/cat.vue";
 import mock from '../mock';
 
 export default {
   name: "home",
   components: {
-    err
+    err,
+    cat
   },
   computed: {
     queryObj () {
@@ -99,7 +99,7 @@ export default {
     handleErr() {
       window.location.reload();
     },
-    control() {
+    control(data) {
       let m = document.getElementById("media");
       m.paused ? m.play() : m.pause();
       this.move = !this.move;
@@ -109,9 +109,6 @@ export default {
       this.swiper = new Swiper(".swiper-container", {
         slidesPerView: 'auto',
         loop: true,
-//        autoplay: 3000,
-//        speed: 300,
-//        autoplayDisableOnInteraction : false,
         autoplay: {
           disableOnInteraction: false, // 手动滑动后是否禁止自动播放
           delay: 3000,
@@ -155,7 +152,7 @@ export default {
       max-width: 100%;
     }
   }
-  .music {
+/*  .music {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -186,11 +183,10 @@ export default {
   @keyframes animY {
     0% {top: 20px;}
     100% {top: 24px;}
-  }
+  }*/
   #media{
     position: absolute;
-    left: 10px;
-    top: 10px;
-    z-index: 100;
+    left: -10px;
+    top: -10px;
   }
 </style>

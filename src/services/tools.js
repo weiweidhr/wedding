@@ -1,7 +1,7 @@
 function loadScript (obj, url) {
   return new Promise((resolve, reject) => {
     if (obj) {
-      resolve();
+      resolve(obj);
       return;
     }
     let script = document.createElement('script');
@@ -10,12 +10,12 @@ function loadScript (obj, url) {
       script.onreadystatechange = function() {
         if (script.readyState === 'loaded' || script.readyState === 'complete') {
           script.onreadystatechange = null;
-          resolve();
+          resolve(obj);
         }
       };
     } else { // Others
       script.onload = function() {
-        resolve();
+        resolve(obj);
       };
     }
     script.src = url;
