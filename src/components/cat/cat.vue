@@ -31,7 +31,8 @@
         leftArm: null,
         rightArm2: null,
         rightFoot: null,
-        umbrella: null
+        umbrella: null,
+        starHolder: null
       };
     },
     methods: {
@@ -147,7 +148,7 @@
 
         });
 
-// mouth
+        // mouth
         new Zdog.Shape({
           path: [
             {x: 0, y: 0},
@@ -200,7 +201,7 @@
           stroke: 2,
           fill: true
         });
-// 右耳朵里面
+        // 右耳朵里面
         new Zdog.Ellipse({
           width: 1,
           height: 2,
@@ -224,7 +225,7 @@
           fill: true
         });
 
-// 左耳朵里面
+        // 左耳朵里面
         new Zdog.Ellipse({
           width: 1,
           height: 2,
@@ -247,7 +248,7 @@
           stroke: 7,
         });
 
-// left arm
+        // left arm
         this.rightArm2.copy({
           path: [
             {x: 0, y: 0},
@@ -309,7 +310,7 @@
             {y: 22},
           ],
           addTo: page.rightArm,
-          translate: {x: -5, y: -20.5, z: -2},
+          translate: {x: -5, y: -23, z: -2},
           rotate: {y: 0.5},
           color: yellow,
           stroke: 1,
@@ -385,7 +386,7 @@
         // floater stars
         (function () {
           for (var i = 0; i < 6; i++) {
-            let starHolder = new Zdog.Anchor({
+             page.starHolder = new Zdog.Anchor({
               addTo: page.umbrella,
               translate: {y: 10},
               rotate: {y: page.TAU / 6 * i + page.TAU / 24},
@@ -438,7 +439,7 @@
     canvas {
         display: block;
         width: 140px;
-        height: 200px;
+        height: 220px;
         cursor: move;
         position: absolute;
         top: -60px;
