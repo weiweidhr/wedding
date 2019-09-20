@@ -438,8 +438,8 @@
 <style scoped>
     canvas {
         display: block;
-        width: 140px;
-        height: 220px;
+        width: 120px;
+        height: 213px;
         cursor: move;
         position: absolute;
         top: -60px;
