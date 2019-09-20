@@ -17,7 +17,7 @@
     data () {
       return {
         sceneSize: 80,
-        isSpinning: false,
+        isSpinning: true,
         TAU: null,
         illo: null,
         body: null,
