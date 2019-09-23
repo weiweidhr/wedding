@@ -11,6 +11,9 @@
   const red = '#ce0f00';
   const yellow = '#FD0';
 
+  var gold = '#EA0';
+  var eggplant = '#636';
+
   export default {
     name: "cat",
     props: ["move"],
@@ -22,6 +25,7 @@
         illo: null,
         body: null,
         body2: null,
+        decorate: null,
         face: null,
         tail: null,
         tail2: null,
@@ -63,6 +67,21 @@
           rotate: {x: 0.3, z: 0.1},
           addTo: page.illo,
           color: pink,
+        });
+        this.decorate = new Zdog.Shape({
+          path: [
+            {x: -4, y: 0},
+            {x: 0, y: 2},
+            {x: 4, y: 0},
+            {x: 4, y: 4},
+            {x: 0, y: 0},
+            {x: -4, y: 4},
+          ],
+          addTo: page.body2,
+          translate: {x: 0, y: -2, z: 10},
+          stroke: 2,
+          color: red,
+          fill: true,
         });
 
         this.face = new Zdog.Anchor({
@@ -106,29 +125,63 @@
         });
 
         [-1, 1].forEach(function (xSide) {
+//          page.eyeGroup = new Zdog.Group({
+//            addTo: page.face,
+//            translate: {x: 2.4 * xSide, y: -1},
+//            rotate: {x: -0.1},
+//          });
+//          // eye
+//          new Zdog.Ellipse({
+//            width: 1.4,
+//            height: 5.5,
+//            addTo: page.eyeGroup,
+//            stroke: 1,
+//            color: black,
+//            fill: true,
+//          });
+//          // eye highlight
+//          new Zdog.Ellipse({
+//            width: 1,
+//            height: 2,
+//            addTo: page.eyeGroup,
+//            translate: {y: -1.2, z: 0.5},
+//            stroke: 0.5,
+//            color: '#FFF',
+//            fill: true,
+//          });
+
           page.eyeGroup = new Zdog.Group({
             addTo: page.face,
-            translate: {x: 2.4 * xSide, y: -1},
-            rotate: {x: -0.1},
+            translate: {x: 3.5 * xSide, y: -1}
           });
-          // eye
+
+// eye white
           new Zdog.Ellipse({
-            width: 1.4,
-            height: 5.5,
             addTo: page.eyeGroup,
-            stroke: 1,
-            color: black,
+            width: 4,
+            height: 6,
+            stroke: 0.8,
             fill: true,
+            color: 'white',
           });
-          // eye highlight
-          new Zdog.Ellipse({
-            width: 1,
-            height: 2,
+
+          var iris = new Zdog.Ellipse({
             addTo: page.eyeGroup,
-            translate: {y: -1.2, z: 0.5},
-            stroke: 0.5,
-            color: '#FFF',
+            diameter: 3.5,
+            stroke: 0.8,
             fill: true,
+            color: gold,
+          });
+// pupil
+          iris.copy({
+            diameter: 2,
+            color: eggplant,
+          });
+// highlight
+          iris.copy({
+            diameter: 1,
+            translate: { x: 1, y: -1 },
+            color: 'white',
           });
 
           // cheek holder
