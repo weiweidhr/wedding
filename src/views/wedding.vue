@@ -53,7 +53,7 @@ export default {
       move: true,
       option: {
         max: 60,
-        now: 56,
+        now: 53,
         unit: 10,
         time: 20000
       }
@@ -70,7 +70,7 @@ export default {
       setTimeout(function() {
         page.initSwiper();
         page.move = !document.getElementById("media").paused;
-      }, 500);
+      }, 1000);
     });
   },
   methods: {

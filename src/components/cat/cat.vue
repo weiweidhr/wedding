@@ -125,31 +125,6 @@
         });
 
         [-1, 1].forEach(function (xSide) {
-//          page.eyeGroup = new Zdog.Group({
-//            addTo: page.face,
-//            translate: {x: 2.4 * xSide, y: -1},
-//            rotate: {x: -0.1},
-//          });
-//          // eye
-//          new Zdog.Ellipse({
-//            width: 1.4,
-//            height: 5.5,
-//            addTo: page.eyeGroup,
-//            stroke: 1,
-//            color: black,
-//            fill: true,
-//          });
-//          // eye highlight
-//          new Zdog.Ellipse({
-//            width: 1,
-//            height: 2,
-//            addTo: page.eyeGroup,
-//            translate: {y: -1.2, z: 0.5},
-//            stroke: 0.5,
-//            color: '#FFF',
-//            fill: true,
-//          });
-
           page.eyeGroup = new Zdog.Group({
             addTo: page.face,
             translate: {x: 3.5 * xSide, y: -1}
