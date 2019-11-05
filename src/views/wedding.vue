@@ -53,7 +53,7 @@ export default {
       move: true,
       option: {
         max: 60,
-        now: 53,
+        now: 52,
         unit: 10,
         time: 20000
       }
