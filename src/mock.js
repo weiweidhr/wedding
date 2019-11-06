@@ -1,5 +1,5 @@
 let photos = [];
-for (let i = 0; i < 56; i++) {
+for (let i = 0; i < 54; i++) {
   photos.push({
     url: require(`./assets/images/${i}.jpg`)
   });
